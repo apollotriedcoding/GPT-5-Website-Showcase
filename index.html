@@ -1,0 +1,279 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Holland — A Love Letter to the Netherlands</title>
+  <meta name="description" content="A visual and sensory journey through the Netherlands — its landscapes, cities, culture, art, and design." />  <!-- Google Fonts -->  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">  <style>
+    /* Color system inspired by Dutch palette: Delft blue, Tulip orange, Meadow green, Cloud white */
+    :root{
+      --bg: #f8fbfd;
+      --card: rgba(255,255,255,0.75);
+      --glass: rgba(255,255,255,0.6);
+      --delft-900: #0b3458; /* deep blue */
+      --delft-600: #2b6fa8;
+      --tulip: #ff6a00; /* bright orange */
+      --meadow: #4aa96c;
+      --muted: #6b7280;
+      --accent-gradient: linear-gradient(135deg,var(--delft-600),#7fb3d5 60%,var(--tulip));
+      --glass-border: rgba(255,255,255,0.35);
+      --radius: 14px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background: radial-gradient(1200px 600px at 10% 10%,#f1fbff 0%,transparent 20%), var(--bg);
+      color:var(--delft-900);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    header{
+      padding:4rem 6vw 3rem;
+      display:flex;
+      gap:2rem;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .brand{
+      display:flex;align-items:center;gap:1rem;
+    }
+    .logo{
+      width:64px;height:64px;border-radius:16px;background:var(--accent-gradient);display:grid;place-items:center;color:white;font-weight:700;font-family:Playfair Display,serif;box-shadow:0 8px 30px rgba(11,52,88,0.12);
+    }
+    .brand h1{margin:0;font-family:Playfair Display, serif;font-size:1.25rem;color:var(--delft-900)}
+    .brand p{margin:0;color:var(--muted);font-size:0.9rem}
+
+    nav{display:flex;gap:1rem;align-items:center}
+    nav a{color:var(--delft-900);text-decoration:none;padding:0.6rem 1rem;border-radius:10px;font-weight:600}
+    nav a:hover{background:linear-gradient(90deg,rgba(11,52,88,0.06),rgba(255,106,0,0.06))}
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 480px;
+      gap:2rem;align-items:center;padding:0 6vw 3rem;
+    }
+
+    .hero-card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:2.25rem;
+      box-shadow:0 8px 30px rgba(11,52,88,0.06);
+      backdrop-filter: blur(6px) saturate(120%);
+      border:1px solid var(--glass-border);
+    }
+
+    .kicker{display:inline-block;padding:0.25rem 0.6rem;border-radius:999px;background:linear-gradient(90deg,var(--delft-600),#7fb3d5);color:white;font-weight:700;font-size:0.75rem}
+
+    h2.hero-title{font-family:Playfair Display,serif;margin:0 0 0.5rem;font-size:2.25rem;color:var(--delft-900)}
+    p.lead{margin:0 0 1.25rem;color:var(--muted);font-size:1.05rem}
+
+    .cta{display:inline-flex;gap:0.75rem;align-items:center;background:var(--delft-900);color:white;padding:0.65rem 1rem;border-radius:12px;text-decoration:none;font-weight:600}
+    .cta.secondary{background:transparent;border:1px solid rgba(11,52,88,0.08);color:var(--delft-900)}
+
+    /* Floating image panel */
+    .hero-media{position:relative;display:grid;place-items:center}
+    .photo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;width:100%}
+    .photo-grid img{width:100%;height:220px;object-fit:cover;border-radius:12px;box-shadow:0 8px 20px rgba(11,52,88,0.08)}
+
+    /* Sections */
+    main{padding:2rem 6vw 6rem}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+
+    .card{background:white;border-radius:12px;padding:1rem;border:1px solid rgba(11,52,88,0.04);box-shadow:0 6px 18px rgba(11,52,88,0.04)}
+    .card h3{margin:0 0 0.5rem;color:var(--delft-600)}
+    .card p{margin:0;color:var(--muted)}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:0.6rem;margin-top:1rem}
+    .gallery img{width:100%;height:160px;object-fit:cover;border-radius:8px}
+
+    /* Info strip */
+    .info-strip{display:flex;gap:1rem;align-items:center;padding:1rem;border-radius:12px;background:linear-gradient(90deg,rgba(74,169,108,0.06),rgba(255,106,0,0.04));border:1px solid rgba(74,169,108,0.06)}
+    .info-strip div{flex:1}
+
+    footer{padding:2rem 6vw;background:linear-gradient(90deg,var(--delft-600),#2279b5);color:white;margin-top:3rem}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .photo-grid img{height:180px}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+    }
+
+    @media (max-width:600px){
+      header{padding:2rem 4vw}
+      .brand h1{font-size:1rem}
+      .photo-grid img{height:140px}
+      .grid{grid-template-columns:1fr}
+      .gallery img{height:120px}
+    }
+
+    /* Subtle entrance animations */
+    .fade-up{transform:translateY(8px);opacity:0;animation:fadeUp 900ms ease forwards}
+    .stagger-1{animation-delay:120ms}
+    .stagger-2{animation-delay:240ms}
+    .stagger-3{animation-delay:360ms}
+    @keyframes fadeUp{to{transform:none;opacity:1}}
+  </style></head>
+<body>  <header>
+    <div class="brand">
+      <div class="logo" aria-hidden>NL</div>
+      <div>
+        <h1>Holland — A Love Letter</h1>
+        <p>Land of tulips, artists, and windmills</p>
+      </div>
+    </div><nav aria-label="Primary">
+  <a href="#culture">Culture</a>
+  <a href="#cities">Cities</a>
+  <a href="#landscape">Landscape</a>
+  <a href="#gallery">Gallery</a>
+</nav>
+
+  </header>  <section class="hero">
+    <div class="hero-card fade-up">
+      <span class="kicker">Discover</span>
+      <h2 class="hero-title">The Netherlands — where maritime spirit meets modern design</h2>
+      <p class="lead">From Amsterdam’s canals and golden age art to endless tulip fields and robust design culture, the Netherlands is a study in balance: intimate yet bold, historic yet contemporary.</p><div style="display:flex;gap:0.75rem;margin-top:1rem">
+    <a class="cta" href="#cities">Explore Cities</a>
+    <a class="cta secondary" href="#gallery">View Gallery</a>
+  </div>
+
+  <div style="margin-top:1.25rem;color:var(--muted);font-size:0.95rem;display:flex;gap:1rem">
+    <div style="display:flex;align-items:center;gap:0.6rem">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7l3-7z" fill="currentColor"/></svg>
+      <div><strong>Highlights</strong><div style="font-size:0.85rem;color:var(--muted)">Art, Design, Nature</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:0.6rem">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden><circle cx="12" cy="12" r="10" fill="currentColor"/></svg>
+      <div><strong>Best time</strong><div style="font-size:0.85rem;color:var(--muted)">Apr–May for tulips</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="hero-media fade-up stagger-1">
+  <div class="photo-grid">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Keukenhof_2015_-_Tulips.jpg" alt="Tulip fields at Keukenhof" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/Amsterdam_Canal_Houses.jpg" alt="Amsterdam canal houses at dusk" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Kinderdijk_windmills.jpg" alt="Kinderdijk windmills" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Van_Gogh_Museum_%282012%29%2C_Amsterdam_-_panoramio.jpg" alt="Van Gogh Museum entrance" />
+  </div>
+</div>
+
+  </section>  <main>
+    <section id="culture" class="grid" aria-labelledby="culture-title">
+      <div class="card fade-up stagger-1">
+        <h3 id="culture-title">Art & Design</h3>
+        <p>From Rembrandt and Vermeer to Van Gogh and modern Dutch Design, the Netherlands has a deep visual culture. Museums like the Rijksmuseum and Van Gogh Museum preserve masterpieces, while contemporary Dutch designers shape global aesthetics.</p>
+      </div><div class="card fade-up stagger-2">
+    <h3>Innovation & Water</h3>
+    <p>Much of the Netherlands sits below sea level — the Dutch mastery of water management (dikes, polders, and the Delta Works) is both engineering marvel and cultural touchstone.</p>
+  </div>
+
+  <div class="card fade-up stagger-3">
+    <h3>Food & Festivals</h3>
+    <p>From herring stands and stroopwafels to vibrant festivals like King's Day (Koningsdag), Dutch food and festivities are welcoming, local, and joyful.</p>
+  </div>
+</section>
+
+<section id="cities" style="margin-top:2rem">
+  <h2 style="margin:0 0 0.75rem" class="fade-up">Cities to fall in love with</h2>
+  <div class="grid" style="margin-top:1rem">
+    <div class="card fade-up stagger-1">
+      <h3>Amsterdam</h3>
+      <p>Canals, narrow merchant houses, world-class museums, and a lively cultural scene. Coffee shops, canalside cycling, and hidden courtyards make Amsterdam endlessly discoverable.</p>
+    </div>
+    <div class="card fade-up stagger-2">
+      <h3>Rotterdam</h3>
+      <p>Bold, modern architecture and a major port define Rotterdam. It's the Netherlands' creative engine, with cutting-edge design, hip neighborhoods, and a dynamic food scene.</p>
+    </div>
+    <div class="card fade-up stagger-3">
+      <h3>Utrecht & The Hague</h3>
+      <p>Utrecht charms with medieval canals and student energy. The Hague blends governance and seaside elegance — home to international courts and diplomatic life.</p>
+    </div>
+  </div>
+</section>
+
+<section id="landscape" style="margin-top:2rem">
+  <h2 class="fade-up">Landscape & Nature</h2>
+  <div class="info-strip fade-up" style="margin-top:0.75rem">
+    <div>
+      <h3 style="margin:0;color:var(--delft-900)">Tulip fields & dunes</h3>
+      <p style="margin:0;color:var(--muted)">Explore rolling fields in spring and the rugged coastal dunes — a contrast that makes the Netherlands visually iconic.</p>
+    </div>
+    <div style="text-align:right">
+      <small style="opacity:0.9">Tip: rent a bike and watch the landscape change like a living painting.</small>
+    </div>
+  </div>
+
+  <div class="gallery" id="gallery">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Flower_picking_in_the_Netherlands.jpg" alt="Flower fields and bicycles" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Beach_at_Zandvoort.jpg" alt="Zandvoort beach" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Schiermonnikoog_bomen.jpg" alt="Schiermonnikoog dunes" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Kinderdijk_The_Netherlands.jpg" alt="Row of windmills at Kinderdijk" />
+  </div>
+</section>
+
+<section id="culture-deep" style="margin-top:2rem">
+  <h2 class="fade-up">A deeper look</h2>
+  <div style="display:grid;grid-template-columns:2fr 1fr;gap:1rem;margin-top:1rem">
+    <article class="card fade-up stagger-1">
+      <h3>History in brief</h3>
+      <p>The Netherlands rose to maritime prominence in the 17th century — the Dutch Golden Age — with trade, science, and the arts flourishing. Its legacy is visible in cityscapes, museums, and global cultural influence.</p>
+
+      <h4 style="margin-top:1rem">Culture snapshots</h4>
+      <ul style="margin:0;padding-left:1.1rem;color:var(--muted)">
+        <li><strong>Design:</strong> Dutch minimalism and functionalism are globally influential.</li>
+        <li><strong>Language:</strong> Dutch (Nederlands) with widespread English proficiency.</li>
+        <li><strong>Tolerance:</strong> Progressive social policies and a liberal cultural history.</li>
+      </ul>
+    </article>
+
+    <aside class="card fade-up stagger-2">
+      <h3>Quick facts</h3>
+      <p style="margin:0;color:var(--muted)"><strong>Capital:</strong> Amsterdam<br><strong>Language:</strong> Dutch<br><strong>Population:</strong> ~17 million<br><strong>Famous for:</strong> Tulips, windmills, canals, dikes, art</p>
+    </aside>
+  </div>
+</section>
+
+<section style="margin-top:2rem" class="card fade-up stagger-3">
+  <h3>Plan your visit</h3>
+  <p style="color:var(--muted)">Best times: spring for tulips, summer for festivals. Travel by train for scenic comfort; rent a bike for the most authentic experience. Respect local cycling rules — the bike paths are the heart of urban life.</p>
+  <div style="display:flex;gap:0.75rem;margin-top:0.75rem;flex-wrap:wrap">
+    <a class="cta" href="#gallery">See Photos</a>
+    <a class="cta secondary" href="#culture">Learn More</a>
+  </div>
+</section>
+
+  </main>  <footer>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap">
+      <div>
+        <strong>Holland — A Love Letter</strong>
+        <div style="opacity:0.9">Made with care • Inspired by canals, tulips, and Dutch design</div>
+      </div><div style="display:flex;gap:0.75rem;align-items:center">
+    <a href="#" style="color:white;text-decoration:none;opacity:0.95">Privacy</a>
+    <a href="#" style="color:white;text-decoration:none;opacity:0.95">Credits</a>
+  </div>
+</div>
+
+  </footer>  <script>
+    // small UX: smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        const href = a.getAttribute('href');
+        if(href.length>1){
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      })
+    })
+  </script></body>
+</html>
